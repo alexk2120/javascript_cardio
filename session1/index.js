@@ -74,21 +74,47 @@ function reverseInt(int) {
 // Return a string with the first letter of every word capitalized
 // ex. capitalizeLetters('i love javascript') === 'I Love Javascript'
 function capitalizeLetters(str) {
-  const words = str.split(' ');
-  const capitalizedWords = words.map(word => {
-  return word[0].toUpperCase() + word.slice(1);
-   });
-   return capitalizedWords.join(' ');
+  // const words = str.split(' ');
+  // const capitalizedWords = words.map(word =>  word[0].toUpperCase() + word.slice(1));
+  //  return capitalizedWords.join(' ');
 }
 
 
-const output = capitalizeLetters('i love javascript');
+// const output = capitalizeLetters('i love javascript');
 
 // CHALLENGE 5: MAX CHARACTER
 // Return the character that is most common in a string
 // ex. maxCharacter('javascript') == 'a'
-function maxCharacter(str) {}
+function maxCharacter(str) {
+  // first we need to create an object to store the characters and their count
+  charMap = {};
+  let maxNum = 0;
+  let maxChar = '';
+  // loop through the string
+  str.split('').forEach(char => {
+    // if the character is not in the object, add it
+    if (!charMap[char]) {
+      charMap[char] = 1;
+    }
+    // if the character is in the object, increment the count
+    else {
+      charMap[char]++;
+    }
+  });
+  // return the character with the highest count
+  for(let char in charMap) {
+    // if (charMap[char] > 1) {
+    //   return char;
+    // }
+    if (charMap[char] > maxNum) {
+      maxNum = charMap[char];
+      maxChar = char;
+    }
+  }
+  return maxChar;
+}
 
+const output = maxCharacter('javascript');
 
 
 // CHALLENGE 6: FIZZBUZZ
